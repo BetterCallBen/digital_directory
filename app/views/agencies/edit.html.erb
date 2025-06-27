@@ -1,0 +1,13 @@
+<% content_for :title, "Modifier #{@agency.name}" %>
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="bg-white shadow-lg rounded-lg p-8">
+      <h1 class="text-2xl font-bold text-gray-900 mb-6">Modifier <%= @agency.name %></h1>
+      <%= render 'form', agency: @agency %>
+      <div class="mt-6 flex justify-between">
+        <%= link_to "← Retour à l'agence", agency_path(@agency), class: "text-blue-600 hover:text-blue-800 font-medium" %>
+        <%= link_to "Voir l'agence", agency_path(@agency), class: "text-gray-600 hover:text-gray-800 font-medium" %>
+      </div>
+    </div>
+  </div>
+</div>

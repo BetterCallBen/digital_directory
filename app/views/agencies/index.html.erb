@@ -1,0 +1,660 @@
+<% content_for :title, "Annuaire des Agences Digitales" %>
+<!-- Éléments décoratifs flous qui débordent - optimisés pour mobile -->
+<div class="relative min-h-screen overflow-x-hidden">
+  <!-- Couleurs floutées en arrière-plan global - Zone supérieure -->
+  <div class="absolute -top-16 md:-top-32 -right-16 md:-right-32 w-48 md:w-96 h-48 md:h-96 opacity-25 pointer-events-none z-0">
+    <div class="absolute top-0 right-0 w-36 md:w-72 h-36 md:h-72 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full blur-3xl"></div>
+    <div class="absolute top-10 md:top-20 right-20 md:right-40 w-20 md:w-40 h-20 md:h-40 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full blur-2xl"></div>
+    <div class="absolute top-20 md:top-40 right-10 md:right-20 w-12 md:w-24 h-12 md:h-24 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full blur-xl"></div>
+  </div>
+  <!-- Zone centrale droite -->
+  <div class="absolute top-1/4 -right-12 md:-right-24 w-32 md:w-64 h-32 md:h-64 opacity-15 pointer-events-none z-0">
+    <div class="absolute top-0 right-0 w-16 md:w-32 h-16 md:h-32 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full blur-2xl"></div>
+    <div class="absolute top-8 md:top-16 right-8 md:right-16 w-10 md:w-20 h-10 md:h-20 bg-gradient-to-br from-sky-400 to-blue-500 rounded-full blur-xl"></div>
+  </div>
+  <!-- Zone inférieure gauche -->
+  <div class="absolute -bottom-20 md:-bottom-40 -left-20 md:-left-40 w-48 md:w-96 h-48 md:h-96 opacity-20 pointer-events-none z-0">
+    <div class="absolute bottom-0 left-0 w-32 md:w-64 h-32 md:h-64 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 md:bottom-20 left-20 md:left-40 w-16 md:w-32 h-16 md:h-32 bg-gradient-to-tr from-indigo-400 to-purple-500 rounded-full blur-2xl"></div>
+    <div class="absolute bottom-20 md:bottom-40 left-10 md:left-20 w-14 md:w-28 h-14 md:h-28 bg-gradient-to-tr from-teal-400 to-cyan-500 rounded-full blur-xl"></div>
+  </div>
+  <!-- Zone centrale gauche -->
+  <div class="absolute top-1/3 -left-12 md:-left-24 w-28 md:w-56 h-28 md:h-56 opacity-6 pointer-events-none z-0">
+    <div class="absolute top-0 left-0 w-12 md:w-24 h-12 md:h-24 bg-gradient-to-tr from-rose-400 to-pink-500 rounded-full blur-3xl"></div>
+    <div class="absolute top-7 md:top-14 left-7 md:left-14 w-8 md:w-16 h-8 md:h-16 bg-gradient-to-tr from-orange-400 to-red-500 rounded-full blur-2xl"></div>
+  </div>
+  <!-- Halos supplémentaires pour plus de profondeur - masqués sur mobile -->
+  <div class="hidden md:block absolute top-1/2 right-1/4 w-40 h-40 opacity-8 pointer-events-none z-0">
+    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-full blur-2xl"></div>
+  </div>
+  <div class="hidden md:block absolute bottom-1/4 left-1/3 w-36 h-36 opacity-10 pointer-events-none z-0">
+    <div class="absolute bottom-0 left-0 w-18 h-18 bg-gradient-to-tr from-lime-400 to-green-500 rounded-full blur-xl"></div>
+  </div>
+  <!-- Section Hero unifiée -->
+  <section class="relative px-3 sm:px-6 lg:px-8 mb-8 sm:mb-12 mt-8 sm:mt-12 lg:mt-20 z-10 max-w-7xl mx-auto">
+    <!-- Pattern de fond géométrique subtil -->
+    <div class="absolute inset-0 opacity-10">
+      <svg class="w-full h-full" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="geometric-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <circle cx="30" cy="30" r="1" fill="url(#dot-gradient)" opacity="0.3"/>
+          </pattern>
+          <linearGradient id="dot-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4F46E5"/>
+            <stop offset="100%" style="stop-color:#7C3AED"/>
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#geometric-pattern)"/>
+      </svg>
+    </div>
+    <!-- Formes géométriques flottantes -->
+    <div class="absolute top-1/4 right-1/4 w-3 h-3 bg-indigo-400 rounded-full opacity-40 animate-pulse"></div>
+    <div class="absolute top-1/3 left-1/4 w-2 h-2 bg-purple-400 rounded-full opacity-50 animate-bounce" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/3 right-1/3 w-4 h-4 bg-blue-400 rounded-full opacity-30 animate-pulse" style="animation-delay: 2s;"></div>
+    <div class="relative z-10">
+      <!-- Titre principal centré -->
+      <div class="text-center lg:mb-12 pt-8">
+        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+          Trouvez la meilleure agence<br class="hidden lg:block">
+          pour votre <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">projet digital</span>
+        </h1>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 items-center">
+        <!-- Contenu texte à gauche -->
+        <div class="text-center lg:text-left space-y-6">
+          <div class="space-y-4">
+            <p class="text-xl font-semibold text-gray-800">
+              Votre futur prestataire est à votre portée !
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              [Nom du site] centralise les agences de la région Auvergne-Rhône-Alpes qui vous accompagnent dans la réussite de votre projet digital.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <%= link_to "Voir la liste des agences", "#agencies", class: "inline-flex items-center justify-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl" %>
+          </div>
+          <!-- Services en badges -->
+          <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-4">
+            <div class="flex items-center gap-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-indigo-200">
+              <div class="w-2 h-2 bg-indigo-600 rounded-full"></div>
+              <span class="text-sm font-medium text-gray-700">Développement</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-purple-200">
+              <div class="w-2 h-2 bg-purple-600 rounded-full"></div>
+              <span class="text-sm font-medium text-gray-700">Stratégie digitale</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-200">
+              <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+              <span class="text-sm font-medium text-gray-700">UX et UI design</span>
+            </div>
+          </div>
+        </div>
+        <!-- Illustration à droite -->
+        <div class="relative order-first lg:order-last">
+          <svg viewBox="0 0 400 300" class="w-full h-auto max-w-lg mx-auto drop-shadow-xl">
+            <!-- Dégradés améliorés -->
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#EEF2FF;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#E0E7FF;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#F3E8FF;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#E9D5FF;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#DBEAFE;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#BFDBFE;stop-opacity:1" />
+              </linearGradient>
+              <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.1"/>
+              </filter>
+            </defs>
+            <!-- Formes géométriques de fond -->
+            <circle cx="320" cy="60" r="30" fill="#EEF2FF" opacity="0.6"/>
+            <rect x="50" y="40" width="20" height="20" rx="4" fill="#E0E7FF" opacity="0.7"/>
+            <circle cx="80" cy="250" r="15" fill="#F3E8FF" opacity="0.5"/>
+            <!-- Écran principal avec ombre -->
+            <rect x="60" y="80" width="180" height="140" rx="12" fill="url(#grad1)" stroke="#C7D2FE" stroke-width="2" filter="url(#shadow)"/>
+            <rect x="70" y="90" width="160" height="100" rx="6" fill="white"/>
+            <!-- Interface dans l'écran -->
+            <rect x="80" y="105" width="80" height="6" rx="3" fill="#6366F1"/>
+            <rect x="80" y="120" width="120" height="4" rx="2" fill="#E5E7EB"/>
+            <rect x="80" y="130" width="100" height="4" rx="2" fill="#E5E7EB"/>
+            <rect x="80" y="150" width="60" height="8" rx="4" fill="#8B5CF6"/>
+            <rect x="150" y="150" width="40" height="8" rx="4" fill="#3B82F6"/>
+            <!-- Mobile avec ombre -->
+            <rect x="280" y="120" width="80" height="120" rx="16" fill="url(#grad2)" stroke="#D8B4FE" stroke-width="2" filter="url(#shadow)"/>
+            <rect x="290" y="135" width="60" height="90" rx="8" fill="white"/>
+            <circle cx="320" cy="145" r="3" fill="#8B5CF6"/>
+            <rect x="300" y="155" width="40" height="3" rx="1.5" fill="#E5E7EB"/>
+            <rect x="300" y="165" width="30" height="3" rx="1.5" fill="#E5E7EB"/>
+            <rect x="300" y="180" width="20" height="6" rx="3" fill="#8B5CF6"/>
+            <!-- Badges avec checkmarks -->
+            <circle cx="40" cy="120" r="16" fill="url(#grad3)" stroke="#93C5FD" stroke-width="2" filter="url(#shadow)"/>
+            <path d="M35 120 L38 123 L45 116" stroke="#3B82F6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="200" cy="50" r="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+            <rect x="196" y="46" width="8" height="8" rx="2" fill="#F59E0B"/>
+            <circle cx="350" cy="200" r="14" fill="#DCFCE7" stroke="#22C55E" stroke-width="1.5"/>
+            <path d="M345 200 L348 203 L355 196" stroke="#22C55E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Lignes de connexion animées -->
+            <line x1="56" y1="120" x2="70" y2="120" stroke="#C7D2FE" stroke-width="3" stroke-dasharray="4,4" opacity="0.8"/>
+            <line x1="240" y1="150" x2="280" y2="150" stroke="#D8B4FE" stroke-width="3" stroke-dasharray="4,4" opacity="0.8"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section des agences -->
+  <section id="agencies" class="relative z-10 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-left mb-8">
+      <h2 class="text-3xl font-bold mb-4">
+        Les <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">meilleures</span> agences digitales
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl">
+        Découvrez les agences les plus performantes de la région Auvergne-Rhône-Alpes.
+      </p>
+    </div>
+    <% if @agencies.any? %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+        <% @agencies.each do |agency| %>
+          <% agency_colors = agency.brand_colors %>
+          <div class="group bg-white rounded-xl shadow-md p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style="opacity: 0; visibility: hidden;">
+            <div class="flex items-start gap-4 mb-4">
+              <% if agency.logo.present? %>
+                <img src="<%= agency.logo %>" alt="Logo <%= agency.name %>" class="w-12 h-12 object-cover flex-shrink-0 rounded-full">
+              <% else %>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-gray-500 text-lg font-semibold"><%= agency.name.first %></span>
+                </div>
+              <% end %>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-lg font-semibold text-gray-900 truncate">
+                  <%= link_to agency.name, agency_path(agency), class: "hover:text-indigo-600 transition-colors" %>
+                </h3>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <% agency.tags.each do |tag| %>
+                    <span class="bg-indigo-100 text-indigo-700 text-xs font-medium px-2 py-1 rounded-md"><%= tag.name %></span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-2 text-sm text-gray-600 flex-grow">
+              <div class="flex items-center gap-2">
+                <%= heroicon "users", variant: :outline, options: { class: "w-4 h-4 text-gray-500 flex-shrink-0" } %>
+                <span><%= agency.team_size %> personnes</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <%= heroicon "calendar", variant: :outline, options: { class: "w-4 h-4 text-gray-500 flex-shrink-0" } %>
+                <span>Créée en <%= agency.creation_date.year %> (<%= agency.age_in_years %> ans)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <%= heroicon "map-pin", variant: :outline, options: { class: "w-4 h-4 text-gray-500 flex-shrink-0" } %>
+                <span class="truncate"><%= agency.location %></span>
+              </div>
+              <% if agency.annual_turnover.present? %>
+                <div class="flex items-center gap-2">
+                  <%= heroicon "currency-euro", variant: :outline, options: { class: "w-4 h-4 text-gray-500 flex-shrink-0" } %>
+                  <span>CA: <%= agency.formatted_annual_turnover %></span>
+                </div>
+              <% end %>
+            </div>
+            <div class="mt-4 pt-4 border-t border-gray-200 flex gap-2">
+              <% if agency.website_url.present? %>
+                <%= link_to agency.website_url, class: "flex-1 text-center bg-gray-100 text-gray-800 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-gray-200", target: "_blank" do %>
+                  <span class="hidden sm:inline">Site web</span>
+                  <span class="sm:hidden">Site</span>
+                <% end %>
+              <% end %>
+              <%= link_to agency_path(agency), class: "group/btn flex-1 text-center text-white py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:px-4 flex items-center justify-center relative overflow-hidden bg-violet-600 hover:bg-violet-700" do %>
+                <span class="transition-transform duration-300 group-hover/btn:-translate-x-1">Découvrir</span>
+                <%= heroicon "chevron-right", options: { class: "w-4 h-4 absolute right-2 opacity-0 translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300" } %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center py-16">
+        <%= heroicon "building-office", options: { class: "w-20 h-20 text-gray-400 mx-auto mb-6" } %>
+        <h3 class="text-2xl font-medium text-gray-900 mb-4">Aucune agence disponible</h3>
+        <p class="text-gray-500 mb-8 text-lg">Les agences seront bientôt disponibles dans l'annuaire.</p>
+      </div>
+    <% end %>
+  </section>
+  <!-- Section de texte informative -->
+  <section class="relative z-10 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto mt-12 sm:mt-16 mb-8 sm:mb-12">
+    <div class="bg-gradient-to-br from-gray-50 via-white to-gray-50 rounded-2xl p-8 lg:p-12 shadow-sm border border-gray-100">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="mb-8">
+          <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+            Votre projet mérite les
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">meilleurs experts</span>
+          </h3>
+          <div class="w-20 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 text-left">
+          <div class="space-y-4">
+            <h4 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+              <div class="w-2 h-2 bg-indigo-600 rounded-full"></div>
+              Pourquoi choisir une agence locale ?
+            </h4>
+            <p class="text-gray-600 leading-relaxed">
+              Les agences de la région Auvergne-Rhône-Alpes comprennent parfaitement les enjeux locaux et peuvent vous accompagner de près dans votre transformation digitale. Proximité, réactivité et expertise technique se conjuguent pour faire de votre projet un succès.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <h4 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+              <div class="w-2 h-2 bg-purple-600 rounded-full"></div>
+              Un accompagnement sur mesure
+            </h4>
+            <p class="text-gray-600 leading-relaxed">
+              Chaque agence référencée a été sélectionnée pour son expertise et son professionnalisme. Que vous soyez une startup, PME ou grand groupe, vous trouverez le partenaire idéal pour développer votre site web, application mobile ou stratégie digitale.
+            </p>
+          </div>
+        </div>
+        <div class="mt-10 pt-8 border-t border-gray-200">
+          <p class="text-sm text-gray-500 italic">
+            Vous êtes une agence digitale basée en Auvergne-Rhône-Alpes et souhaitez rejoindre notre annuaire ?
+            <a href="#" class="text-indigo-600 hover:text-indigo-700 font-medium transition-colors">Contactez-nous</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section FAQ -->
+  <section class="relative z-10 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto mt-12 sm:mt-16 mb-12 sm:mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <!-- Colonne de gauche - Illustration moderne -->
+      <div class="relative order-last lg:order-first">
+        <div class="relative">
+          <!-- Forme géométrique principale -->
+          <div class="relative max-w-sm mx-auto">
+            <!-- Cercles décoratifs en arrière-plan -->
+            <div class="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full opacity-60"></div>
+            <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full opacity-70"></div>
+            <div class="absolute top-1/2 -right-4 w-12 h-12 bg-gradient-to-br from-violet-100 to-pink-100 rounded-full opacity-50"></div>
+            <!-- Card principale FAQ -->
+            <div class="relative bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <!-- En-tête avec icône FAQ -->
+              <div class="flex items-center justify-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+              </div>
+              <!-- Items FAQ simulés -->
+              <div class="space-y-4">
+                <!-- Item 1 -->
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                    <div class="h-2 bg-gray-300 rounded w-24"></div>
+                  </div>
+                  <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+                <!-- Item 2 (étendu) -->
+                <div class="p-3 bg-indigo-50 rounded-lg border border-indigo-200">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-3">
+                      <div class="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                      <div class="h-2 bg-indigo-400 rounded w-32"></div>
+                    </div>
+                    <svg class="w-4 h-4 text-indigo-500 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </div>
+                  <div class="ml-5 space-y-1">
+                    <div class="h-1.5 bg-indigo-200 rounded w-full"></div>
+                    <div class="h-1.5 bg-indigo-200 rounded w-4/5"></div>
+                    <div class="h-1.5 bg-indigo-200 rounded w-3/5"></div>
+                  </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <div class="h-2 bg-gray-300 rounded w-28"></div>
+                  </div>
+                  <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+                <!-- Item 4 -->
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div class="h-2 bg-gray-300 rounded w-20"></div>
+                  </div>
+                  <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <!-- Éléments flottants -->
+            <div class="absolute -top-4 left-8 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-md">
+              <span class="text-white text-sm font-bold">?</span>
+            </div>
+            <div class="absolute -bottom-3 right-6 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-md">
+              <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Colonne de droite - FAQ Content -->
+      <div class="space-y-8">
+        <div class="text-center lg:text-left">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Questions
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">fréquentes</span>
+          </h2>
+          <p class="text-lg text-gray-600">
+            Trouvez rapidement les réponses aux questions les plus courantes sur notre annuaire.
+          </p>
+        </div>
+        <!-- FAQ Items -->
+        <div class="space-y-4">
+          <!-- FAQ Item 1 -->
+          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300">
+            <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset"
+                    onclick="toggleFAQ(this)">
+              <h3 class="text-lg font-semibold text-gray-900 pr-4">Comment fonctionne l'annuaire ?</h3>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+              <div class="pb-5 border-t border-gray-100 pt-4">
+                <p class="text-gray-600 leading-relaxed">
+                  Notre annuaire référence les meilleures agences digitales de la région Auvergne-Rhône-Alpes.
+                  Chaque agence est soigneusement sélectionnée et présentée avec ses spécialités, son équipe et ses références pour vous aider à faire le bon choix.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ Item 2 -->
+          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300">
+            <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset"
+                    onclick="toggleFAQ(this)">
+              <h3 class="text-lg font-semibold text-gray-900 pr-4">L'annuaire peut-il s'interfacer avec des logiciels de caisse existants ?</h3>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+              <div class="pb-5 border-t border-gray-100 pt-4">
+                <p class="text-gray-600 leading-relaxed">
+                  Notre plateforme est conçue pour s'intégrer facilement avec la plupart des systèmes existants.
+                  Les agences référencées ont l'expertise nécessaire pour développer des solutions compatibles avec vos outils actuels.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ Item 3 -->
+          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300">
+            <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset"
+                    onclick="toggleFAQ(this)">
+              <h3 class="text-lg font-semibold text-gray-900 pr-4">Qu'est-ce qu'une solution logicielle pour restaurant ?</h3>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+              <div class="pb-5 border-t border-gray-100 pt-4">
+                <p class="text-gray-600 leading-relaxed">
+                  Les agences de notre annuaire développent des solutions complètes pour le secteur de la restauration :
+                  systèmes de commande en ligne, applications mobiles, gestion des stocks, programmes de fidélité et bien plus encore.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ Item 4 -->
+          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300">
+            <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset"
+                    onclick="toggleFAQ(this)">
+              <h3 class="text-lg font-semibold text-gray-900 pr-4">Dans quelles langues les agences travaillent-elles ?</h3>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+              <div class="pb-5 border-t border-gray-100 pt-4">
+                <p class="text-gray-600 leading-relaxed">
+                  Les agences référencées maîtrisent une large gamme de technologies et langages de programmation :
+                  JavaScript, PHP, Python, React, Vue.js, Laravel, Symfony et bien d'autres selon les besoins de votre projet.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Script JavaScript pour les FAQ -->
+  <script>
+    function toggleFAQ(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('svg');
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+      // Fermer tous les autres FAQ
+      document.querySelectorAll('.faq-content').forEach(faq => {
+        if (faq !== content) {
+          faq.style.maxHeight = '0px';
+          faq.previousElementSibling.querySelector('svg').style.transform = 'rotate(0deg)';
+        }
+      });
+
+      // Toggle le FAQ actuel
+      if (isOpen) {
+        content.style.maxHeight = '0px';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // Animations d'apparition au scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      // Styles CSS pour les animations
+      const styles = `
+        <style>
+          /* S'assurer que le body prend toute la largeur sur mobile */
+          body {
+            overflow-x: hidden;
+            width: 100%;
+          }
+
+          .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          }
+
+          .animate-on-scroll.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          .animate-fade-in {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+          }
+
+          .animate-fade-in.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          .animate-slide-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          }
+
+          .animate-slide-left.animate-visible {
+            opacity: 1;
+            transform: translateX(0);
+          }
+
+          .animate-slide-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          }
+
+          .animate-slide-right.animate-visible {
+            opacity: 1;
+            transform: translateX(0);
+          }
+
+          .animate-scale-up {
+            opacity: 0 !important;
+            transform: scale(0.95) translateY(15px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          }
+
+          .animate-scale-up.animate-visible {
+            opacity: 1 !important;
+            transform: scale(1) translateY(0);
+          }
+
+          .stagger-item {
+            opacity: 0 !important;
+            transform: scale(0.95) translateY(20px) !important;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            visibility: hidden !important;
+          }
+
+          .stagger-item.animate-visible {
+            opacity: 1 !important;
+            transform: scale(1) translateY(0) !important;
+            visibility: visible !important;
+          }
+
+          .animate-stagger {
+            transition-delay: var(--delay, 0ms);
+          }
+        </style>
+      `;
+      document.head.insertAdjacentHTML('beforeend', styles);
+
+      // Configuration de l'Intersection Observer
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-visible');
+          }
+        });
+      }, observerOptions);
+
+      // Observer pour les éléments avec délai
+      const staggerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const cards = entry.target.querySelectorAll('.stagger-item');
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add('animate-visible');
+                // Supprimer les styles inline après l'animation pour éviter les problèmes de hover
+                setTimeout(() => {
+                  card.style.removeProperty('opacity');
+                  card.style.removeProperty('visibility');
+                }, 300); // Attendre la fin de la transition (300ms)
+              }, index * 100); // Délai de 100ms entre chaque carte
+            });
+          }
+        });
+      }, observerOptions);
+
+      // Appliquer les classes d'animation aux éléments
+
+      // Hero section - animations différées
+      const heroTitle = document.querySelector('h1');
+      if (heroTitle) {
+        heroTitle.classList.add('animate-fade-in');
+        observer.observe(heroTitle);
+      }
+
+      const heroContent = document.querySelector('.text-center.lg\\:text-left');
+      if (heroContent) {
+        heroContent.classList.add('animate-slide-left');
+        observer.observe(heroContent);
+      }
+
+      const heroIllustration = document.querySelector('.order-first.lg\\:order-last svg');
+      if (heroIllustration) {
+        heroIllustration.parentElement.classList.add('animate-slide-right');
+        observer.observe(heroIllustration.parentElement);
+      }
+
+      // Section des agences
+      const agenciesTitle = document.querySelector('#agencies .text-left.mb-8');
+      if (agenciesTitle) {
+        agenciesTitle.classList.add('animate-on-scroll');
+        observer.observe(agenciesTitle);
+      }
+
+      // Grille des agences avec effet stagger
+      const agenciesGrid = document.querySelector('#agencies .grid');
+      if (agenciesGrid) {
+        // Ajouter la classe stagger-item à chaque carte d'agence
+        const agencyCards = agenciesGrid.querySelectorAll('.group.bg-white');
+        agencyCards.forEach((card, index) => {
+          card.classList.add('animate-scale-up', 'stagger-item');
+          card.style.setProperty('--delay', `${index * 150}ms`);
+        });
+        staggerObserver.observe(agenciesGrid);
+      }
+
+      // Section informative
+      const infoSection = document.querySelector('.bg-gradient-to-br.from-gray-50');
+      if (infoSection) {
+        infoSection.classList.add('animate-on-scroll');
+        observer.observe(infoSection);
+      }
+
+      // Section FAQ
+      const faqTitle = document.querySelector('.text-3xl.lg\\:text-4xl.font-bold');
+      if (faqTitle && faqTitle.textContent.includes('Questions')) {
+        faqTitle.parentElement.classList.add('animate-slide-left');
+        observer.observe(faqTitle.parentElement);
+      }
+
+      const faqIllustration = document.querySelector('.order-last.lg\\:order-first .relative');
+      if (faqIllustration) {
+        faqIllustration.classList.add('animate-slide-right');
+        observer.observe(faqIllustration);
+      }
+
+      // FAQ Items avec effet stagger
+      const faqItems = document.querySelectorAll('.space-y-4 > .group.border');
+      faqItems.forEach((item, index) => {
+        item.classList.add('animate-on-scroll', 'animate-stagger');
+        item.style.setProperty('--delay', `${index * 50}ms`);
+        observer.observe(item);
+      });
+
+      // Badges de services
+      const serviceBadges = document.querySelectorAll('.flex.items-center.gap-2.bg-white\\/70');
+      serviceBadges.forEach((badge, index) => {
+        badge.classList.add('animate-scale-up', 'animate-stagger');
+        badge.style.setProperty('--delay', `${index * 100}ms`);
+        observer.observe(badge);
+      });
+    });
+  </script>
+</div>
