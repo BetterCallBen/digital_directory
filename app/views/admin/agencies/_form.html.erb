@@ -1,0 +1,249 @@
+<div class="min-h-screen bg-gray-50">
+  <!-- Header moderne épuré - FIXE -->
+  <div class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-200 backdrop-blur-sm bg-opacity-95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="py-4 sm:py-6">
+        <!-- Version mobile -->
+        <div class="block sm:hidden" data-controller="mobile-menu">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3">
+              <%= link_to admin_agencies_path, class: "inline-flex items-center px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors" do %>
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Agences
+              <% end %>
+              <h1 class="text-lg font-bold text-gray-900">
+                <%= @agency.persisted? ? "Modifier" : "Nouvelle agence" %>
+              </h1>
+            </div>
+            <!-- Menu hamburger -->
+            <button data-mobile-menu-target="button" data-action="click->mobile-menu#toggle" class="inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+          <!-- Menu mobile épuré -->
+          <div data-mobile-menu-target="menu" class="overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 mt-4">
+            <div class="bg-white border border-gray-200 rounded-xl shadow-lg p-4 space-y-3 mt-2">
+              <%= link_to root_path, class: "group flex items-center w-full px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all duration-200" do %>
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+                Voir le site
+              <% end %>
+              <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "group flex items-center w-full px-4 py-3 rounded-lg text-sm font-medium text-red-700 hover:bg-red-50 transition-all duration-200" do %>
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3v1"/>
+                </svg>
+                Se déconnecter
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <!-- Version desktop épurée -->
+        <div class="hidden sm:flex justify-between items-center">
+          <div class="flex items-center space-x-4">
+            <%= link_to admin_agencies_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-all duration-200" do %>
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              Agences
+            <% end %>
+            <h1 class="text-2xl font-bold text-gray-900">
+              <%= @agency.persisted? ? "Modifier l'agence" : "Nouvelle agence" %>
+            </h1>
+          </div>
+          <div class="flex space-x-3">
+            <%= link_to root_path, class: "group inline-flex items-center px-5 py-2.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-all duration-200" do %>
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+              Voir le site
+            <% end %>
+            <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "group inline-flex items-center px-5 py-2.5 border border-red-300 rounded-lg text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 transition-all duration-200" do %>
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3v1"/>
+              </svg>
+              Se déconnecter
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Contenu principal avec padding-top pour compenser la navbar fixe -->
+  <div class="pt-28 sm:pt-32">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <%= form_with(model: [:admin, @agency], local: true, class: "space-y-8") do |form| %>
+        <% if @agency.errors.any? %>
+          <div class="rounded-xl bg-red-50 p-4 sm:p-6 border border-red-200">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <%= heroicon "x-circle", variant: :outline, options: { class: "h-6 w-6 text-red-400" } %>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-red-800 mb-2">
+                  <%= pluralize(@agency.errors.count, "erreur") %> empêchent la sauvegarde :
+                </h3>
+                <div class="text-sm text-red-700">
+                  <ul class="list-disc pl-5 space-y-1">
+                    <% @agency.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <!-- Informations principales -->
+        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 sm:p-6 border border-indigo-100">
+          <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+            <%= heroicon "building-office", variant: :outline, options: { class: "w-6 h-6 mr-3 text-indigo-600" } %>
+            Informations principales
+          </h2>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <%= form.label :name, "Nom de l'agence", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+              <%= form.text_field :name,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 text-lg",
+                  placeholder: "Ex: Agence Digital Lyon" %>
+            </div>
+            <div class="sm:col-span-2">
+              <%= form.label :description, "Description", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+              <%= form.text_area :description, rows: 4,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 resize-none",
+                  placeholder: "Décrivez l'agence, ses spécialités et son expertise..." %>
+            </div>
+            <div>
+              <%= form.label :location, "Localisation", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+              <%= form.text_field :location,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200",
+                  placeholder: "Ex: Lyon, Paris" %>
+            </div>
+            <div>
+              <%= form.label :team_size, "Taille de l'équipe", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+              <%= form.number_field :team_size,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200",
+                  placeholder: "Ex: 25" %>
+            </div>
+          </div>
+        </div>
+        <!-- Détails financiers et temporels -->
+        <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 sm:p-6 border border-blue-100">
+          <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+            <%= heroicon "calendar", variant: :outline, options: { class: "w-6 h-6 mr-3 text-blue-600" } %>
+            Informations complémentaires
+          </h2>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div>
+              <%= form.label :creation_date, "Date de création", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+              <%= form.date_field :creation_date,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200" %>
+            </div>
+            <div>
+              <%= form.label :annual_turnover, "Chiffre d'affaires annuel (€)", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+              <%= form.number_field :annual_turnover, step: 1000,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200",
+                  placeholder: "Ex: 2500000" %>
+            </div>
+            <div>
+              <%= form.label :website_url, "Site web", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+              <%= form.url_field :website_url,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200",
+                  placeholder: "https://www.example.com" %>
+            </div>
+          </div>
+        </div>
+        <!-- Spécialités -->
+        <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 sm:p-6 border border-purple-100">
+          <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+            <%= heroicon "tag", variant: :outline, options: { class: "w-6 h-6 mr-3 text-purple-600" } %>
+            Spécialités
+          </h2>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <% Tag.all.each do |tag| %>
+              <label class="relative flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 <%= @agency.tag_ids.include?(tag.id) ? 'bg-white text-gray-700 border-purple-600' : 'bg-white text-gray-700 border-gray-300 hover:border-purple-300' %>">
+                <%= check_box_tag "agency[tag_ids][]", tag.id, @agency.tag_ids.include?(tag.id),
+                    id: "agency_tag_ids_#{tag.id}",
+                    class: "sr-only",
+                    onchange: "window.toggleTag(this)" %>
+                <div class="flex items-center w-full">
+                  <div class="flex-shrink-0 w-5 h-5 border-2 rounded-md mr-3 flex items-center justify-center <%= @agency.tag_ids.include?(tag.id) ? 'border-purple-600 bg-purple-600' : 'border-gray-300 bg-white' %>">
+                    <% if @agency.tag_ids.include?(tag.id) %>
+                      <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                    <% end %>
+                  </div>
+                  <div class="flex-1">
+                    <span class="text-sm font-medium"><%= tag.name %></span>
+                    <% if tag.description.present? %>
+                      <p class="text-xs mt-1 opacity-75"><%= tag.description %></p>
+                    <% end %>
+                  </div>
+                </div>
+              </label>
+            <% end %>
+          </div>
+          <%= hidden_field_tag "agency[tag_ids][]", "" %>
+        </div>
+        <script>
+          window.toggleTag = function(checkbox) {
+            console.log('toggleTag called', checkbox.checked);
+
+            const label = checkbox.closest('label');
+            const checkContainer = label.querySelector('div.flex-shrink-0');
+            let checkIcon = label.querySelector('svg');
+
+            if (checkbox.checked) {
+              // État sélectionné - bordure violette et check violet
+              label.classList.remove('border-gray-300', 'hover:border-purple-300');
+              label.classList.add('border-purple-600');
+
+              checkContainer.classList.remove('border-gray-300', 'bg-white');
+              checkContainer.classList.add('border-purple-600', 'bg-purple-600');
+
+              if (!checkIcon) {
+                // Créer l'icône check si elle n'existe pas avec styles inline pour être sûr
+                const svg = document.createElement('svg');
+                svg.setAttribute('class', 'w-3 h-3');
+                svg.setAttribute('fill', 'currentColor');
+                svg.setAttribute('viewBox', '0 0 20 20');
+                svg.style.color = 'white'; // Force la couleur blanche
+                svg.innerHTML = '<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>';
+                checkContainer.appendChild(svg);
+              } else {
+                // Forcer la couleur blanche avec du style inline
+                checkIcon.style.display = 'block';
+                checkIcon.style.color = 'white';
+                checkIcon.setAttribute('class', 'w-3 h-3');
+              }
+            } else {
+              // État non sélectionné - bordure grise
+              label.classList.remove('border-purple-600');
+              label.classList.add('border-gray-300', 'hover:border-purple-300');
+
+              checkContainer.classList.remove('border-purple-600', 'bg-purple-600');
+              checkContainer.classList.add('border-gray-300', 'bg-white');
+
+              if (checkIcon) {
+                checkIcon.style.display = 'none';
+              }
+            }
+          };
+        </script>
+        <!-- Boutons d'action -->
+        <div class="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+          <%= link_to "Annuler", admin_agencies_path,
+              class: "inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200" %>
+          <%= form.submit (@agency.persisted? ? "Mettre à jour l'agence" : "Créer l'agence"),
+              class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200" %>
+        </div>
+      <% end %>
+    </div>
+  </div>

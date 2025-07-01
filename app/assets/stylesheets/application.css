@@ -139,3 +139,21 @@
 .animate-float-positioned-right {
   animation: float-positioned-right 2.5s ease-in-out infinite;
 }
+
+
+.new_user {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Hover effects for form sections */
+.bg-gradient-to-r:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Focus states for inputs */
+input:focus, textarea:focus, select:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5);
+}

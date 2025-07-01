@@ -64,7 +64,7 @@
         <% end %>
       </div>
       <!-- Enhanced Agency Header -->
-      <div class="pt-20 text-center animate-on-scroll" data-animation="fade-in-up">
+      <div class="pt-20 pb-2 text-center animate-on-scroll" data-animation="fade-in-up">
         <!-- Enhanced Logo with multiple effects -->
         <div class="flex justify-center mb-12 animate-on-scroll" data-animation="zoom-in" data-delay="200">
           <div class="relative group">
@@ -149,14 +149,20 @@
           </div>
           <span class="text-xl lg:text-2xl font-semibold"><%= @agency.location %></span>
         </div>
+        <!-- Description de l'agence -->
+        <% if @agency.description.present? %>
+          <div class="max-w-4xl mx-auto text-center mb-12 animate-on-scroll" data-animation="fade-in-up" data-delay="700">
+            <p class="text-lg lg:text-xl text-gray-600 leading-relaxed"><%= @agency.description %></p>
+          </div>
+        <% end %>
         <!-- Enhanced Website Button with better effects -->
         <% if @agency.website_url.present? %>
           <div class="relative group/cta animate-on-scroll" data-animation="fade-in-up" data-delay="800">
             <!-- Animated background -->
             <%= link_to @agency.website_url, target: "_blank", rel: "noopener", class: "relative inline-flex items-center gap-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 hover:from-indigo-700 hover:via-purple-700 hover:to-indigo-800 text-white font-bold px-10 py-5 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105 text-lg" do %>
-              <%= heroicon("globe-alt", variant: :outline, options: { class: "w-6 h-6 transition-transform duration-300 group-hover/cta:rotate-12" }) %>
+              <%= heroicon("globe-alt", variant: :outline, options: { style: "color: white", class: "w-6 h-6 text-white transition-transform duration-300 group-hover/cta:rotate-12" }) %>
               <span>Visiter le site web</span>
-              <%= heroicon("arrow-top-right-on-square", variant: :outline, options: { class: "w-5 h-5 opacity-75 transition-transform duration-300 group-hover/cta:translate-x-1" }) %>
+              <%= heroicon("arrow-top-right-on-square", variant: :outline, options: { style: "color: white", class: "w-5 h-5 text-white opacity-75 transition-transform duration-300 group-hover/cta:translate-x-1" }) %>
             <% end %>
           </div>
         <% end %>

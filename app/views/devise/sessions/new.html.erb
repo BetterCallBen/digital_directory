@@ -1,0 +1,83 @@
+<div class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex flex-col justify-center py-16 sm:px-8 lg:px-12">
+  <!-- Éléments décoratifs flous -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+    <div class="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-full opacity-20 blur-3xl"></div>
+    <div class="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full opacity-15 blur-2xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-10 blur-xl"></div>
+  </div>
+  <div class="relative z-10 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="text-center mb-8">
+      <div class="mx-auto h-16 w-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3">
+        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H7m2 0v-6a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h4"/>
+        </svg>
+      </div>
+      <h1 class="mt-6 text-3xl font-bold text-gray-900">Annuaire Digital</h1>
+      <h2 class="mt-4 text-2xl font-bold text-gray-900">
+        Administration
+      </h2>
+      <p class="mt-2 text-gray-600">
+        Connectez-vous pour gérer l'annuaire
+      </p>
+    </div>
+  </div>
+  <div class="relative z-10 mt-12 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white/80 backdrop-blur-sm py-10 px-8 shadow-2xl sm:rounded-2xl sm:px-12 border border-white/20 mx-4 sm:mx-0">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), local: true, class: "space-y-6") do |f| %>
+        <div>
+          <%= f.label :email, "Adresse email", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
+              </svg>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                class: "block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-white/50",
+                placeholder: "votre@email.com" %>
+          </div>
+        </div>
+        <div>
+          <%= f.label :password, "Mot de passe", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <%= f.password_field :password, autocomplete: "current-password",
+                class: "block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-white/50",
+                placeholder: "••••••••" %>
+          </div>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="flex items-center">
+            <%= f.check_box :remember_me, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" %>
+            <%= f.label :remember_me, "Se souvenir de moi", class: "ml-3 block text-sm font-medium text-gray-700" %>
+          </div>
+        <% end %>
+        <div>
+          <%= f.submit "Se connecter",
+              class: "group relative w-full flex justify-center py-3 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200" %>
+        </div>
+      <% end %>
+      <div class="mt-8">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300/50" />
+            </div>
+          </div>
+          <div class="mt-6 text-center space-y-3">
+            <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
+              <%= link_to "Mot de passe oublié ?", new_password_path(resource_name),
+                class: "inline-flex items-center text-sm text-indigo-600 hover:text-indigo-500 font-medium transition-colors" %>
+            <% end %>
+            <div>
+              <%= link_to "← Retour à l'accueil", root_path,
+                class: "inline-flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

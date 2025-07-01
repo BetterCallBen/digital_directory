@@ -1,0 +1,90 @@
+<div class="px-4 py-6 sm:px-0">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-gray-900">
+      <%= @agency.persisted? ? "Modifier l'agence" : "Nouvelle agence" %>
+    </h1>
+    <%= link_to "Retour", admin_agencies_path,
+        class: "text-gray-600 hover:text-gray-900 text-sm font-medium" %>
+  </div>
+  <div class="bg-white shadow-sm rounded-lg">
+    <div class="px-4 py-5 sm:p-6">
+      <%= form_with(model: [:admin, @agency], local: true, class: "space-y-6") do |form| %>
+        <% if @agency.errors.any? %>
+          <div class="rounded-md bg-red-50 p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <%= heroicon "x-circle", options: { class: "h-5 w-5 text-red-400" } %>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-red-800">
+                  <%= pluralize(@agency.errors.count, "erreur") %> empêchent la sauvegarde :
+                </h3>
+                <div class="mt-2 text-sm text-red-700">
+                  <ul class="list-disc pl-5 space-y-1">
+                    <% @agency.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+          <div class="sm:col-span-4">
+            <%= form.label :name, "Nom de l'agence", class: "block text-sm font-medium text-gray-700" %>
+            <%= form.text_field :name, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+          <div class="sm:col-span-6">
+            <%= form.label :description, "Description", class: "block text-sm font-medium text-gray-700" %>
+            <%= form.text_area :description, rows: 4, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+          <div class="sm:col-span-3">
+            <%= form.label :location, "Localisation", class: "block text-sm font-medium text-gray-700" %>
+            <%= form.text_field :location, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+          <div class="sm:col-span-3">
+            <%= form.label :team_size, "Taille de l'équipe", class: "block text-sm font-medium text-gray-700" %>
+            <%= form.number_field :team_size, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+          <div class="sm:col-span-3">
+            <%= form.label :creation_date, "Date de création", class: "block text-sm font-medium text-gray-700" %>
+            <%= form.date_field :creation_date, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+          <div class="sm:col-span-3">
+            <%= form.label :annual_turnover, "Chiffre d'affaires annuel", class: "block text-sm font-medium text-gray-700" %>
+            <%= form.number_field :annual_turnover, step: 1000, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= form.label :website_url, "Site web", class: "block text-sm font-medium text-gray-700" %>
+            <%= form.url_field :website_url, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= form.label :logo, "URL du logo", class: "block text-sm font-medium text-gray-700" %>
+            <%= form.url_field :logo, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+          <div class="sm:col-span-6">
+            <%= form.label :tag_ids, "Spécialités", class: "block text-sm font-medium text-gray-700" %>
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              <% Tag.all.each do |tag| %>
+                <div class="flex items-center">
+                  <%= check_box_tag "agency[tag_ids][]", tag.id, @agency.tag_ids.include?(tag.id),
+                      id: "agency_tag_ids_#{tag.id}",
+                      class: "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" %>
+                  <%= label_tag "agency_tag_ids_#{tag.id}", tag.name, class: "ml-2 text-sm text-gray-700" %>
+                </div>
+              <% end %>
+            </div>
+            <%= hidden_field_tag "agency[tag_ids][]", "" %>
+          </div>
+        </div>
+        <div class="flex justify-end space-x-3">
+          <%= link_to "Annuler", admin_agencies_path,
+              class: "bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+          <%= form.submit (@agency.persisted? ? "Mettre à jour" : "Créer l'agence"),
+              class: "ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

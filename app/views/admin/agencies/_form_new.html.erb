@@ -1,0 +1,160 @@
+<div class="px-4 py-6 sm:px-0">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">
+      <%= @agency.persisted? ? "Modifier l'agence" : "Nouvelle agence" %>
+    </h1>
+    <%= link_to "Retour", admin_agencies_path,
+        class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors" %>
+  </div>
+  <div class="px-6 py-8 sm:p-10">
+    <%= form_with(model: [:admin, @agency], local: true, class: "space-y-8") do |form| %>
+      <% if @agency.errors.any? %>
+        <div class="rounded-xl bg-red-50 p-6 border border-red-200">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <%= heroicon "x-circle", options: { class: "h-6 w-6 text-red-400" } %>
+            </div>
+            <div class="ml-4">
+              <h3 class="text-lg font-semibold text-red-800 mb-2">
+                <%= pluralize(@agency.errors.count, "erreur") %> empêchent la sauvegarde :
+              </h3>
+              <div class="text-sm text-red-700">
+                <ul class="list-disc pl-5 space-y-1">
+                  <% @agency.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!-- Informations principales -->
+      <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+          <%= heroicon "building-office", options: { class: "w-6 h-6 mr-3 text-indigo-600" } %>
+          Informations principales
+        </h2>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div class="sm:col-span-2">
+            <%= form.label :name, "Nom de l'agence", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+            <%= form.text_field :name,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 text-lg",
+                  placeholder: "Ex: Agence Digital Lyon" %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= form.label :description, "Description", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+            <%= form.text_area :description, rows: 4,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 resize-none",
+                  placeholder: "Décrivez l'agence, ses spécialités et son expertise..." %>
+          </div>
+          <div>
+            <%= form.label :location, "Localisation", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+            <%= form.text_field :location,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200",
+                  placeholder: "Ex: Lyon, Paris" %>
+          </div>
+          <div>
+            <%= form.label :team_size, "Taille de l'équipe", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+            <%= form.number_field :team_size,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200",
+                  placeholder: "Ex: 25" %>
+          </div>
+        </div>
+      </div>
+      <!-- Détails financiers et temporels -->
+      <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+          <%= heroicon "calendar", options: { class: "w-6 h-6 mr-3 text-blue-600" } %>
+          Informations complémentaires
+        </h2>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div>
+            <%= form.label :creation_date, "Date de création", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+            <%= form.date_field :creation_date,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200" %>
+          </div>
+          <div>
+            <%= form.label :annual_turnover, "Chiffre d'affaires annuel (€)", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+            <%= form.number_field :annual_turnover, step: 1000,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200",
+                  placeholder: "Ex: 2500000" %>
+          </div>
+          <div>
+            <%= form.label :website_url, "Site web", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+            <%= form.url_field :website_url,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200",
+                  placeholder: "https://www.example.com" %>
+          </div>
+          <div>
+            <%= form.label :logo, "URL du logo", class: "block text-sm font-semibold text-gray-700 mb-2" %>
+            <%= form.url_field :logo,
+                  class: "block w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200",
+                  placeholder: "https://www.example.com/logo.png" %>
+          </div>
+        </div>
+      </div>
+      <!-- Spécialités -->
+      <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+          <%= heroicon "tag", options: { class: "w-6 h-6 mr-3 text-purple-600" } %>
+          Spécialités
+        </h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <% Tag.all.each do |tag| %>
+            <label class="relative flex items-start p-4 rounded-xl border-2 border-gray-200 cursor-pointer hover:border-purple-300 hover:bg-purple-25 transition-all duration-200 group">
+              <%= check_box_tag "agency[tag_ids][]", tag.id, @agency.tag_ids.include?(tag.id),
+                    id: "agency_tag_ids_#{tag.id}",
+                    class: "sr-only peer" %>
+              <div class="flex items-center w-full">
+                <div class="w-5 h-5 border-2 border-gray-300 rounded-md peer-checked:bg-purple-600 peer-checked:border-purple-600 transition-all duration-200 flex items-center justify-center mr-3">
+                  <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <span class="text-sm font-medium text-gray-900 group-hover:text-purple-700 transition-colors"><%= tag.name %></span>
+                  <% if tag.description.present? %>
+                    <p class="text-xs text-gray-500 mt-1"><%= tag.description %></p>
+                  <% end %>
+                </div>
+              </div>
+            </label>
+          <% end %>
+        </div>
+        <%= hidden_field_tag "agency[tag_ids][]", "" %>
+      </div>
+      <!-- Boutons d'action -->
+      <div class="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+        <%= link_to "Annuler", admin_agencies_path,
+              class: "inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200" %>
+        <%= form.submit (@agency.persisted? ? "Mettre à jour l'agence" : "Créer l'agence"),
+              class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<style>
+  /* Custom checkbox styles */
+  input[type="checkbox"]:checked + div .w-5 {
+    @apply bg-purple-600 border-purple-600;
+  }
+
+  input[type="checkbox"]:checked + div svg {
+    @apply opacity-100;
+  }
+
+  input[type="checkbox"]:focus + div {
+    @apply ring-2 ring-purple-500 ring-opacity-50;
+  }
+
+  /* Hover effects for form sections */
+  .bg-gradient-to-r:hover {
+    @apply shadow-md;
+  }
+
+  /* Focus states for inputs */
+  input:focus, textarea:focus, select:focus {
+    @apply ring-2 ring-opacity-50 transform scale-[1.02];
+  }
+</style>

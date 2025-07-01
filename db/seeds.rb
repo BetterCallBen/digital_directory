@@ -5,6 +5,15 @@
 # Supprimer les données existantes pour éviter les doublons
 Agency.destroy_all
 Tag.destroy_all
+User.destroy_all
+
+# Créer un utilisateur admin
+admin_user = User.create!(
+  email: "admin@example.com",
+  password: "password123",
+  admin: true,
+)
+puts "✓ Utilisateur admin créé avec succès : #{admin_user.email}"
 
 # Créer les tags
 tags_data = [
@@ -37,6 +46,7 @@ agencies_data = [
     location: "Lyon, Paris",
     team_size: 50,
     website_url: "https://zol.fr",
+    description: "Agence digitale leader spécialisée dans la transformation numérique des entreprises. ZOL accompagne ses clients depuis plus de 20 ans avec une expertise reconnue en développement sur mesure et stratégie digitale.",
   },
   {
     name: "GentleView",
@@ -46,6 +56,7 @@ agencies_data = [
     location: "Lyon, Grenoble",
     team_size: 15,
     website_url: "https://www.gentleview.fr",
+    description: "Studio créatif spécialisé dans l'UX/UI design et le développement web. GentleView crée des expériences numériques exceptionnelles en alliant créativité et performance technique.",
   },
   {
     name: "Agence Tiz",
@@ -55,6 +66,7 @@ agencies_data = [
     location: "Lyon",
     team_size: 25,
     website_url: "https://www.agence-tiz.fr",
+    description: "Agence digitale lyonnaise experte en développement web et stratégie SEO. Tiz accompagne les entreprises dans leur croissance digitale avec des solutions innovantes et performantes.",
   },
   {
     name: "Digitas",
@@ -64,6 +76,7 @@ agencies_data = [
     location: "Lyon, Paris",
     team_size: 120,
     website_url: "https://www.digitas.fr",
+    description: "Grande agence internationale spécialisée dans les applications mobiles et l'expérience utilisateur. Digitas conçoit des solutions digitales pour les plus grandes marques mondiales.",
   },
   {
     name: "Wanadev",
@@ -73,6 +86,7 @@ agencies_data = [
     location: "Lyon",
     team_size: 35,
     website_url: "https://www.wanadev.fr",
+    description: "Studio de développement expert en applications mobiles et formation digitale. Wanadev crée des solutions innovantes et accompagne les équipes dans leur montée en compétences.",
   },
   {
     name: "Eskimoz",
@@ -82,6 +96,7 @@ agencies_data = [
     location: "Lyon, Paris",
     team_size: 18,
     website_url: "https://www.eskimoz.fr",
+    description: "Agence spécialisée en référencement naturel et payant. Eskimoz optimise la visibilité en ligne des entreprises avec une approche data-driven et des résultats mesurables.",
   },
   {
     name: "Niji",
@@ -91,6 +106,7 @@ agencies_data = [
     location: "Lyon, Nantes, Bordeaux, Rennes",
     team_size: 80,
     website_url: "https://www.niji.fr",
+    description: "Agence de transformation digitale spécialisée dans les applications mobiles et l'UX design. Niji accompagne les entreprises dans leur mutation numérique avec une approche centrée utilisateur.",
   },
   {
     name: "Linkweb",
@@ -100,6 +116,7 @@ agencies_data = [
     location: "Lyon",
     team_size: 16,
     website_url: "https://www.linkweb.fr",
+    description: "Agence web historique spécialisée dans le développement de sites internet et l'hébergement. Linkweb propose des solutions complètes avec un service de qualité depuis plus de 20 ans.",
   },
   {
     name: "Agence 90",
@@ -109,6 +126,7 @@ agencies_data = [
     location: "Lyon",
     team_size: 12,
     website_url: "https://www.agence90.fr",
+    description: "Studio créatif spécialisé en design UX/UI et formation digitale. L'Agence 90 conçoit des interfaces intuitives et forme les équipes aux meilleures pratiques du design.",
   },
   {
     name: "Proximis",
@@ -118,6 +136,7 @@ agencies_data = [
     location: "Lyon, Clermont-Ferrand",
     team_size: 40,
     website_url: "https://www.proximis.com",
+    description: "Société de services informatiques spécialisée dans le développement sur mesure et la maintenance applicative. Proximis accompagne les entreprises avec des solutions robustes et évolutives.",
   },
   {
     name: "Studio Bagarre",
@@ -127,6 +146,7 @@ agencies_data = [
     location: "Lyon",
     team_size: 20,
     website_url: "https://www.studiobagarre.com",
+    description: "Studio créatif audacieux spécialisé en design UX/UI et développement d'applications mobiles. Studio Bagarre crée des expériences digitales mémorables avec une approche innovante.",
   },
   {
     name: "Web et Solutions",
@@ -136,6 +156,7 @@ agencies_data = [
     location: "Lyon, Villeurbanne",
     team_size: 28,
     website_url: "https://www.webetsolutions.com",
+    description: "Agence spécialisée en e-commerce et maintenance de sites web. Web et Solutions développe des boutiques en ligne performantes et assure un support technique de qualité.",
   },
   {
     name: "Agence Karma",
@@ -145,6 +166,7 @@ agencies_data = [
     location: "Lyon",
     team_size: 14,
     website_url: "https://www.agence-karma.fr",
+    description: "Agence digitale bienveillante spécialisée en design UX/UI et stratégie SEO. Karma crée des expériences positives en plaçant l'humain au cœur de chaque projet digital.",
   },
   {
     name: "Smile",
@@ -154,6 +176,7 @@ agencies_data = [
     location: "Lyon, Paris, Bordeaux, Nantes, Montpellier",
     team_size: 200,
     website_url: "https://www.smile.eu",
+    description: "Leader européen des solutions digitales open source. Smile développe des plateformes e-commerce et des applications sur mesure pour les grands comptes avec plus de 25 ans d'expertise.",
   },
 ]
 

@@ -29,6 +29,9 @@ gem "jbuilder"
 # Heroicons for Rails [https://github.com/bharget/heroicons]
 gem "heroicons"
 
+# Devise for authentication [https://github.com/heartcombo/devise]
+gem "devise"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

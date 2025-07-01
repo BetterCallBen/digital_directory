@@ -8,7 +8,7 @@
   </style>
 <% end %>
 <!-- Éléments décoratifs flous qui débordent - optimisés pour mobile -->
-<div class="relative w-full">
+<div class="relative w-full" data-controller="agencies-index">
   <!-- Couleurs floutées en arrière-plan global - Zone supérieure -->
   <div class="absolute -top-16 md:-top-32 -right-8 md:-right-16 w-32 md:w-80 h-32 md:h-80 opacity-25 pointer-events-none z-0 max-w-[50vw] max-h-[50vh]">
     <div class="absolute top-0 right-0 w-24 md:w-64 h-24 md:h-64 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full blur-3xl"></div>
@@ -167,7 +167,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
         <% @agencies.each do |agency| %>
           <% agency_colors = agency.brand_colors %>
-          <div class="group bg-white rounded-xl shadow-md p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style="opacity: 0; visibility: hidden;">
+          <div class="group bg-white rounded-xl shadow-md p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 stagger-item">
             <div class="flex items-start gap-4 mb-4">
               <% if agency.logo.present? %>
                 <img src="<%= agency.logo %>" alt="Logo <%= agency.name %>" class="w-12 h-12 object-cover flex-shrink-0 rounded-full">
@@ -187,6 +187,9 @@
                 </div>
               </div>
             </div>
+            <% if agency.description.present? %>
+              <p class="text-sm text-gray-600 mb-3 overflow-hidden text-left" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"><%= agency.description %></p>
+            <% end %>
             <div class="space-y-2 text-sm text-gray-600 flex-grow">
               <div class="flex items-center gap-2">
                 <%= heroicon "users", variant: :outline, options: { class: "w-4 h-4 text-gray-500 flex-shrink-0" } %>
@@ -369,15 +372,15 @@
         <!-- FAQ Items -->
         <div class="space-y-4">
           <!-- FAQ Item 1 -->
-          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300">
-            <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset"
-                    onclick="toggleFAQ(this)">
+          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300" data-controller="faq">
+            <button class="faq-button w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
+                    data-action="click->faq#toggle">
               <h3 class="text-lg font-semibold text-gray-900 pr-4">Comment fonctionne l'annuaire ?</h3>
-              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg data-faq-target="icon" class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+            <div data-faq-target="content" class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
               <div class="pb-5 border-t border-gray-100 pt-4">
                 <p class="text-gray-600 leading-relaxed">
                   Notre annuaire référence les meilleures agences digitales de la région Auvergne-Rhône-Alpes.
@@ -387,15 +390,15 @@
             </div>
           </div>
           <!-- FAQ Item 2 -->
-          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300">
-            <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset"
-                    onclick="toggleFAQ(this)">
+          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300" data-controller="faq">
+            <button class="faq-button w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
+                    data-action="click->faq#toggle">
               <h3 class="text-lg font-semibold text-gray-900 pr-4">L'annuaire peut-il s'interfacer avec des logiciels de caisse existants ?</h3>
-              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg data-faq-target="icon" class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+            <div data-faq-target="content" class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
               <div class="pb-5 border-t border-gray-100 pt-4">
                 <p class="text-gray-600 leading-relaxed">
                   Notre plateforme est conçue pour s'intégrer facilement avec la plupart des systèmes existants.
@@ -405,15 +408,15 @@
             </div>
           </div>
           <!-- FAQ Item 3 -->
-          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300">
-            <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset"
-                    onclick="toggleFAQ(this)">
+          <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300" data-controller="faq">
+            <button class="faq-button w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
+                    data-action="click->faq#toggle">
               <h3 class="text-lg font-semibold text-gray-900 pr-4">Qu'est-ce qu'une solution logicielle pour restaurant ?</h3>
-              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg data-faq-target="icon" class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+            <div data-faq-target="content" class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
               <div class="pb-5 border-t border-gray-100 pt-4">
                 <p class="text-gray-600 leading-relaxed">
                   Les agences de notre annuaire développent des solutions complètes pour le secteur de la restauration :
@@ -424,252 +427,26 @@
           </div>
           <!-- FAQ Item 4 -->
           <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300">
-            <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset"
-                    onclick="toggleFAQ(this)">
-              <h3 class="text-lg font-semibold text-gray-900 pr-4">Dans quelles langues les agences travaillent-elles ?</h3>
-              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
-              <div class="pb-5 border-t border-gray-100 pt-4">
-                <p class="text-gray-600 leading-relaxed">
-                  Les agences référencées maîtrisent une large gamme de technologies et langages de programmation :
-                  JavaScript, PHP, Python, React, Vue.js, Laravel, Symfony et bien d'autres selon les besoins de votre projet.
-                </p>
+            <!-- FAQ Item 4 -->
+            <div class="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all duration-300" data-controller="faq">
+              <button class="faq-button w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
+                    data-action="click->faq#toggle">
+                <h3 class="text-lg font-semibold text-gray-900 pr-4">Dans quelles langues les agences travaillent-elles ?</h3>
+                <svg data-faq-target="icon" class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div data-faq-target="content" class="faq-content px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+                <div class="pb-5 border-t border-gray-100 pt-4">
+                  <p class="text-gray-600 leading-relaxed">
+                    Les agences référencées maîtrisent une large gamme de technologies et langages de programmation :
+                    JavaScript, PHP, Python, React, Vue.js, Laravel, Symfony et bien d'autres selon les besoins de votre projet.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- Script JavaScript pour les FAQ -->
-  <script>
-    function toggleFAQ(button) {
-      const content = button.nextElementSibling;
-      const icon = button.querySelector('svg');
-      const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-      // Fermer tous les autres FAQ
-      document.querySelectorAll('.faq-content').forEach(faq => {
-        if (faq !== content) {
-          faq.style.maxHeight = '0px';
-          faq.previousElementSibling.querySelector('svg').style.transform = 'rotate(0deg)';
-        }
-      });
-
-      // Toggle le FAQ actuel
-      if (isOpen) {
-        content.style.maxHeight = '0px';
-        icon.style.transform = 'rotate(0deg)';
-      } else {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.style.transform = 'rotate(180deg)';
-      }
-    }
-
-    // Animations d'apparition au scroll
-    document.addEventListener('DOMContentLoaded', function() {
-      // Styles CSS pour les animations
-      const styles = `
-        <style>
-          /* Force l'overflow hidden sur tous les niveaux */
-          html, body {
-            overflow-x: hidden !important;
-            max-width: 100vw !important;
-          }
-
-          /* Container principal */
-          .main-container {
-            width: 100%;
-            max-width: 100vw;
-            overflow-x: hidden;
-          }
-
-          .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-          }
-
-          .animate-on-scroll.animate-visible {
-            opacity: 1;
-            transform: translateY(0);
-          }
-
-          .animate-fade-in {
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-          }
-
-          .animate-fade-in.animate-visible {
-            opacity: 1;
-            transform: translateY(0);
-          }
-
-          .animate-slide-left {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-          }
-
-          .animate-slide-left.animate-visible {
-            opacity: 1;
-            transform: translateX(0);
-          }
-
-          .animate-slide-right {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-          }
-
-          .animate-slide-right.animate-visible {
-            opacity: 1;
-            transform: translateX(0);
-          }
-
-          .animate-scale-up {
-            opacity: 0 !important;
-            transform: scale(0.95) translateY(15px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-          }
-
-          .animate-scale-up.animate-visible {
-            opacity: 1 !important;
-            transform: scale(1) translateY(0);
-          }
-
-          .stagger-item {
-            opacity: 0 !important;
-            transform: scale(0.95) translateY(20px) !important;
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            visibility: hidden !important;
-          }
-
-          .stagger-item.animate-visible {
-            opacity: 1 !important;
-            transform: scale(1) translateY(0) !important;
-            visibility: visible !important;
-          }
-
-          .animate-stagger {
-            transition-delay: var(--delay, 0ms);
-          }
-        </style>
-      `;
-      document.head.insertAdjacentHTML('beforeend', styles);
-
-      // Configuration de l'Intersection Observer
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-visible');
-          }
-        });
-      }, observerOptions);
-
-      // Observer pour les éléments avec délai
-      const staggerObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const cards = entry.target.querySelectorAll('.stagger-item');
-            cards.forEach((card, index) => {
-              setTimeout(() => {
-                card.classList.add('animate-visible');
-                // Supprimer les styles inline après l'animation pour éviter les problèmes de hover
-                setTimeout(() => {
-                  card.style.removeProperty('opacity');
-                  card.style.removeProperty('visibility');
-                }, 300); // Attendre la fin de la transition (300ms)
-              }, index * 100); // Délai de 100ms entre chaque carte
-            });
-          }
-        });
-      }, observerOptions);
-
-      // Appliquer les classes d'animation aux éléments
-
-      // Hero section - animations différées
-      const heroTitle = document.querySelector('h1');
-      if (heroTitle) {
-        heroTitle.classList.add('animate-fade-in');
-        observer.observe(heroTitle);
-      }
-
-      const heroContent = document.querySelector('.text-center.lg\\:text-left');
-      if (heroContent) {
-        heroContent.classList.add('animate-slide-left');
-        observer.observe(heroContent);
-      }
-
-      const heroIllustration = document.querySelector('.order-first.lg\\:order-last svg');
-      if (heroIllustration) {
-        heroIllustration.parentElement.classList.add('animate-slide-right');
-        observer.observe(heroIllustration.parentElement);
-      }
-
-      // Section des agences
-      const agenciesTitle = document.querySelector('#agencies .text-left.mb-8');
-      if (agenciesTitle) {
-        agenciesTitle.classList.add('animate-on-scroll');
-        observer.observe(agenciesTitle);
-      }
-
-      // Grille des agences avec effet stagger
-      const agenciesGrid = document.querySelector('#agencies .grid');
-      if (agenciesGrid) {
-        // Ajouter la classe stagger-item à chaque carte d'agence
-        const agencyCards = agenciesGrid.querySelectorAll('.group.bg-white');
-        agencyCards.forEach((card, index) => {
-          card.classList.add('animate-scale-up', 'stagger-item');
-          card.style.setProperty('--delay', `${index * 150}ms`);
-        });
-        staggerObserver.observe(agenciesGrid);
-      }
-
-      // Section informative
-      const infoSection = document.querySelector('.bg-gradient-to-br.from-gray-50');
-      if (infoSection) {
-        infoSection.classList.add('animate-on-scroll');
-        observer.observe(infoSection);
-      }
-
-      // Section FAQ
-      const faqTitle = document.querySelector('.text-3xl.lg\\:text-4xl.font-bold');
-      if (faqTitle && faqTitle.textContent.includes('Questions')) {
-        faqTitle.parentElement.classList.add('animate-slide-left');
-        observer.observe(faqTitle.parentElement);
-      }
-
-      const faqIllustration = document.querySelector('.order-last.lg\\:order-first .relative');
-      if (faqIllustration) {
-        faqIllustration.classList.add('animate-slide-right');
-        observer.observe(faqIllustration);
-      }
-
-      // FAQ Items avec effet stagger
-      const faqItems = document.querySelectorAll('.space-y-4 > .group.border');
-      faqItems.forEach((item, index) => {
-        item.classList.add('animate-on-scroll', 'animate-stagger');
-        item.style.setProperty('--delay', `${index * 50}ms`);
-        observer.observe(item);
-      });
-
-      // Badges de services
-      const serviceBadges = document.querySelectorAll('.flex.items-center.gap-2.bg-white\\/70');
-      serviceBadges.forEach((badge, index) => {
-        badge.classList.add('animate-scale-up', 'animate-stagger');
-        badge.style.setProperty('--delay', `${index * 100}ms`);
-        observer.observe(badge);
-      });
-    });
-  </script>
-</div>
+    </section>
+  </div>

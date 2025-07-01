@@ -1,5 +1,6 @@
 class AgenciesController < ApplicationController
   before_action :set_agency, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_admin, except: [:index, :show]
 
   # GET /agencies
   def index
@@ -52,6 +53,6 @@ class AgenciesController < ApplicationController
   end
 
   def agency_params
-    params.require(:agency).permit(:name, :logo, :creation_date, :annual_turnover, :location, :team_size, :website_url)
+    params.require(:agency).permit(:name, :logo, :creation_date, :annual_turnover, :location, :team_size, :website_url, :description)
   end
 end
